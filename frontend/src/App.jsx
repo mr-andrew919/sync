@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useSyncedTimeline } from './hooks/useSyncedTimeline.js';
 import { useSyncedMouse } from './hooks/useSyncedMouse.js';
+import UploadModal from './components/UploadModal.jsx';
 
 function buildTransform({ phase, mouseX, mouseY }) {
   const oscillation = Math.sin(phase);
@@ -27,6 +28,7 @@ function buildTransform({ phase, mouseX, mouseY }) {
 export default function App() {
   const phase = useSyncedTimeline({ speed: 0.55 });
   const mousePos = useSyncedMouse();
+  const [isUploadOpen, setUploadOpen] = useState(false);
 
   const transforms = useMemo(
     () => buildTransform({ phase, mouseX: mousePos.x, mouseY: mousePos.y }),
@@ -39,6 +41,14 @@ export default function App() {
     if (newWindow) {
       newWindow.focus();
     }
+  };
+
+  const handleOpenUpload = () => {
+    setUploadOpen(true);
+  };
+
+  const handleCloseUpload = () => {
+    setUploadOpen(false);
   };
 
   return (
@@ -64,9 +74,13 @@ export default function App() {
             <button type="button" onClick={handleOpenPortal}>
               Open portal
             </button>
+            <button type="button" className="btn-secondary" onClick={handleOpenUpload}>
+              Add watermark
+            </button>
           </div>
         </div>
       </div>
+      <UploadModal isOpen={isUploadOpen} onClose={handleCloseUpload} />
     </div>
   );
 }
