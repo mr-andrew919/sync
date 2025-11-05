@@ -1,0 +1,4 @@
+node_modules
+wat-img/*
+!wat-img/.gitkeep
+
