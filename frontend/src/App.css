@@ -1,0 +1,201 @@
+:root {
+  color-scheme: dark;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #060711;
+  color: #f6f8ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(88, 100, 250, 0.35), transparent 55%),
+    radial-gradient(circle at 80% 25%, rgba(91, 220, 255, 0.3), transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(255, 120, 212, 0.25), transparent 55%),
+    #05060e;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 6vw, 4rem);
+  align-items: center;
+  max-width: 1080px;
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: 0.95fr 1.05fr;
+  }
+}
+
+.visual {
+  position: relative;
+  width: min(62vw, 460px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  isolation: isolate;
+  filter: drop-shadow(0 25px 140px rgba(66, 202, 255, 0.12));
+}
+
+.field {
+  position: absolute;
+  inset: 12%;
+  background: radial-gradient(circle, rgba(76, 159, 255, 0.3) 0%, rgba(23, 34, 61, 0.2) 50%, transparent 100%);
+  filter: blur(24px);
+  opacity: calc(0.42 + var(--glow-intensity, 0.5) * 0.55);
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 96%;
+  height: 96%;
+  border-radius: 50%;
+  border: 1.8px solid rgba(176, 207, 255, 0.3);
+  mix-blend-mode: screen;
+  box-shadow: 0 0 60px rgba(86, 165, 255, 0.23);
+  backdrop-filter: blur(1px);
+}
+
+.ring--outer {
+  border-width: 2px;
+  box-shadow: 0 0 80px rgba(58, 169, 255, 0.22);
+}
+
+.ring--inner {
+  width: 68%;
+  height: 68%;
+  border-width: 1.2px;
+  box-shadow: 0 0 40px rgba(255, 147, 245, 0.18);
+}
+
+.beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(94, 220, 255, 0.8), transparent);
+  opacity: calc(0.35 + var(--glow-intensity, 0.5) * 0.45);
+  transform-origin: center;
+  filter: drop-shadow(0 0 40px rgba(66, 249, 255, 0.4));
+}
+
+.orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 22% 28%, rgba(255, 255, 255, 0.85), rgba(111, 177, 255, 0.74) 45%, rgba(45, 112, 242, 0.55) 65%, transparent 100%);
+  box-shadow:
+    0 0 65px rgba(106, 196, 255, 0.38),
+    0 0 120px rgba(207, 136, 255, 0.32);
+  transform-origin: center;
+  overflow: hidden;
+}
+
+.orb__core {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(88, 178, 255, 0.6) 75%, rgba(4, 9, 22, 0.8) 100%);
+  filter: blur(2px);
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  color: rgba(233, 239, 255, 0.95);
+  text-align: center;
+}
+
+@media (min-width: 960px) {
+  .cta {
+    text-align: left;
+    padding-inline-start: clamp(0rem, 2vw, 2.6rem);
+  }
+}
+
+.cta h1 {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  letter-spacing: -0.03em;
+}
+
+.cta p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(210, 224, 255, 0.78);
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cta button {
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 0;
+  background: linear-gradient(135deg, #53a1ff, #8f74ff 55%, #ff74f6);
+  color: #080a17;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow:
+    0 15px 45px rgba(90, 170, 255, 0.35),
+    0 0 1px rgba(255, 255, 255, 0.3);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.cta button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 22px 60px rgba(104, 180, 255, 0.45),
+    0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+.cta button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.cta button.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(233, 239, 255, 0.95);
+  border: 1px solid rgba(176, 207, 255, 0.3);
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.2),
+    0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.cta button.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(176, 207, 255, 0.5);
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.3),
+    0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
